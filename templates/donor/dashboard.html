@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="dashboard-container">
+  <!-- Dashboard Header -->
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">
+      Welcome, {{ session.get('username', 'Donor') }}!
+    </h1>
+    <p class="dashboard-subtitle">
+      Make a difference by donating food to those in need
+    </p>
+    <a href="{{ url_for('donor_feedback') }}" class="btn btn-primary mb-3">
+      <i class="fas fa-comment-alt me-2"></i>View Feedback
+    </a>
+  </div>
+
+  <div class="row">
+    <!-- Donation Form Card -->
+    <div class="col-lg-5">
+      <div class="donation-form-card">
+        <div class="donation-form-header">
+          <h2 class="donation-form-title">
+            <i class="fas fa-hand-holding-heart me-2"></i>Create New Donation
+          </h2>
+        </div>
+        <div class="donation-form-body">
+          <form
+            action="{{ url_for('create_donation') }}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="food_type"
+                name="food_type"
+                placeholder="Food Type"
+                required
+              />
+              <label for="food_type">Food Type</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="quantity"
+                name="quantity"
+                placeholder="Quantity"
+                required
+              />
+              <label for="quantity">Quantity</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <input
+                type="datetime-local"
+                class="form-control"
+                id="expiration_date"
+                name="expiration_date"
+                required
+              />
+              <label for="expiration_date">Expiration Date &amp; Time</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                id="food_condition"
+                name="food_condition"
+                placeholder="Food Condition"
+                style="height: 100px"
+              ></textarea>
+              <label for="food_condition">Food Condition</label>
+            </div>
+
+            <div class="form-floating mb-3">
+              <textarea
+                class="form-control"
+                id="pickup_location"
+                name="pickup_location"
+                placeholder="Pickup Location"
+                required
+                style="height: 100px"
+              ></textarea>
+              <label for="pickup_location">Pickup Location</label>
+            </div>
+
+            <div class="file-upload-wrapper mb-3">
+              <input
+                type="file"
+                class="file-upload-input"
+                id="food_image"
+                name="food_image"
+                accept="image/*"
+              />
+              <div class="file-upload-text">
+                <i class="fas fa-camera me-2"></i>Upload Food Image (Optional)
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-donate w-100">
+              <i class="fas fa-plus-circle me-2"></i>Create Donation
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Donations Table Card -->
+    <div class="col-lg-7">
+      <div class="donations-table-card">
+        <div class="donations-table-header">
+          <h2 class="donation-form-title">
+            <i class="fas fa-history me-2"></i>My Donations
+          </h2>
+        </div>
+        <div class="table-responsive">
+          <table class="table donations-table">
+            <thead>
+              <tr>
+                <th>Food Type</th>
+                <th>Quantity</th>
+                <th>Expires On</th>
+                <th>Status</th>
+                <th>Created At</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for donation in donations %}
+              <tr>
+                <td>{{ donation[2] }}</td>
+                <td>{{ donation[3] }}</td>
+                <td>{{ donation[4] }}</td>
+                <td>
+                  <span class="status-badge status-{{ donation[8] }}">
+                    {{ donation[8]|title }}
+                  </span>
+                </td>
+                <td>
+                  {{ donation[9].strftime('%Y-%m-%d %H:%M') if donation[9] else
+                  'N/A' }}
+                </td>
+              </tr>
+              {% endfor %} {% if not donations %}
+              <tr>
+                <td colspan="5" class="text-center py-4">
+                  <i class="fas fa-box-open fa-2x mb-3 text-muted"></i>
+                  <p class="text-muted mb-0">
+                    No donations yet. Create your first donation!
+                  </p>
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add custom JavaScript for file input -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const fileInput = document.querySelector(".file-upload-input");
+    const fileText = document.querySelector(".file-upload-text");
+
+    fileInput.addEventListener("change", function () {
+      if (this.files && this.files[0]) {
+        fileText.innerHTML =
+          '<i class="fas fa-file-image me-2"></i>' + this.files[0].name;
+      } else {
+        fileText.innerHTML =
+          '<i class="fas fa-camera me-2"></i>Upload Food Image (Optional)';
+      }
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,200 @@
+/* Admin Dashboard Styles */
+
+:root {
+    --tropical-indigo: #9381ffff;
+    --periwinkle: #b8b8ffff;
+    --ghost-white: #f8f7ffff;
+    --text-dark: #333;
+    --text-light: #666;
+}
+
+.admin-dashboard-container {
+    margin-top: 5rem;
+    padding: 2rem;
+    background-color: var(--ghost-white);
+    min-height: 100vh;
+}
+
+.admin-dashboard-header {
+    background: linear-gradient(135deg, var(--tropical-indigo), var(--periwinkle));
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 20px rgba(147, 129, 255, 0.2);
+}
+
+.admin-dashboard-title {
+    color: white;
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.admin-dashboard-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+/* Cards for Sections */
+.admin-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(147, 129, 255, 0.1);
+    margin-bottom: 2rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.admin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(147, 129, 255, 0.15);
+}
+
+.admin-card-header {
+    background-color: var(--periwinkle);
+    color: var(--text-dark);
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--tropical-indigo);
+}
+
+.admin-card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--text-dark);
+}
+
+.admin-card-body {
+    padding: 1.5rem;
+}
+
+/* Table Styles */
+.admin-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.admin-table thead th {
+    background-color: var(--periwinkle);
+    color: var(--text-dark);
+    font-weight: bold;
+    padding: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+
+.admin-table tbody tr {
+    background-color: #f9f9ff;
+    transition: all 0.3s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--ghost-white);
+    transform: scale(1.01);
+}
+
+.admin-table tbody td {
+    padding: 1rem;
+    color: var(--text-light);
+}
+
+/* Badge Styles */
+.badge-info {
+    background-color: var(--tropical-indigo);
+    color: white;
+}
+
+.badge-success {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.badge-danger {
+    background-color: #F44336;
+    color: white;
+}
+
+.badge {
+    padding: 0.5em 0.75em;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Action Button Styles */
+.btn-danger {
+    background-color: #F44336;
+    border-color: #F44336;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: #D32F2F;
+    transform: translateY(-2px);
+}
+
+/* Stats Cards */
+.admin-stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.admin-stat-card {
+    background: linear-gradient(135deg, var(--tropical-indigo), var(--periwinkle));
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(147, 129, 255, 0.2);
+}
+
+.admin-stat-icon {
+    font-size: 2.5rem;
+    opacity: 0.7;
+}
+
+.admin-stat-content {
+    text-align: right;
+}
+
+.admin-stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.admin-stat-label {
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* Responsive adjustments if needed - can be added later */
+@media (max-width: 768px) {
+    .admin-dashboard-container {
+        padding: 1rem;
+    }
+    .admin-stats-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.progress {
+    height: 20px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    background-color: #28a745; /* Green for completed */
+    transition: width 0.4s ease;
+}

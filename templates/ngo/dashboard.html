@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="ngo-dashboard-container">
+  <!-- Dashboard Header -->
+  <div class="ngo-dashboard-header">
+    <h1 class="ngo-dashboard-title">NGO Dashboard</h1>
+    <p class="ngo-dashboard-subtitle">
+      Manage your donations and requests efficiently
+    </p>
+
+    <a href="{{ url_for('received_donations') }}" class="btn btn-accept mb-3">
+      <i class="fas fa-box-open me-2"></i>View Received Donations
+    </a>
+  </div>
+
+  <div class="card donations-table-card">
+    <div class="donations-table-header">
+      <h4>Available Donations</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table donations-table">
+        <thead>
+          <tr>
+            <th>Donor</th>
+            <th>Food Type</th>
+            <th>Quantity</th>
+            <th>Expiration Date</th>
+            <th>Pickup Location</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for donation in donations %}
+          <tr>
+            <td>{{ donation[8] }}</td>
+            <td>{{ donation[2] }}</td>
+            <td>{{ donation[3] }}</td>
+            <td>{{ donation[4] }}</td>
+            <td>{{ donation[6] }}</td>
+            <td>
+              <span class="status-badge status-{{ donation[8] }}">
+                {{ donation[8]|title }}
+              </span>
+            </td>
+            <td>
+              {% if donation[8] == 'pending' %}
+              <button
+                type="button"
+                class="btn btn-accept"
+                data-bs-toggle="modal"
+                data-bs-target="#acceptModal{{ donation[0] }}"
+              >
+                Accept Donation
+              </button>
+
+              <!-- Accept Modal -->
+              <div
+                class="modal fade"
+                id="acceptModal{{ donation[0] }}"
+                tabindex="-1"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Accept Donation</h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                      ></button>
+                    </div>
+                    <form
+                      action="{{ url_for('accept_donation') }}"
+                      method="POST"
+                    >
+                      <div class="modal-body">
+                        <input
+                          type="hidden"
+                          name="donation_id"
+                          value="{{ donation[0] }}"
+                        />
+                        <div class="mb-3">
+                          <label for="ngo_address" class="form-label"
+                            >NGO Address</label
+                          >
+                          <textarea
+                            class="form-control"
+                            id="ngo_address"
+                            name="ngo_address"
+                            required
+                          ></textarea>
+                        </div>
+                        <div class="mb-3">
+                          <label for="reason" class="form-label"
+                            >Reason for Accepting</label
+                          >
+                          <textarea
+                            class="form-control"
+                            id="reason"
+                            name="reason"
+                            required
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="submit" class="btn btn-accept">
+                          Accept
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="card donations-table-card mb-4">
+    <div class="donations-table-header">
+      <h4>Rejected Delivery Requests</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table donations-table">
+        <thead>
+          <tr>
+            <th>Food Type</th>
+            <th>Quantity</th>
+            <th>Rejected By</th>
+            <th>Rejection Reason</th>
+            <th>Images</th>
+            <th>Rejected At</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for rejection in rejected_requests %}
+          <tr>
+            <td>{{ rejection.food_type }}</td>
+            <td>{{ rejection.quantity }}</td>
+            <td>{{ rejection.volunteer_name }}</td>
+            <td>{{ rejection.rejection_reason }}</td>
+            <td>
+              {% if rejection.rejection_images %} {% for image in
+              rejection.rejection_images.split(',') %}
+              <a
+                href="{{ url_for('static', filename='uploads/' + image) }}"
+                target="_blank"
+              >
+                <img
+                  src="{{ url_for('static', filename='uploads/' + image) }}"
+                  class="rejection-image"
+                  alt="Rejection Evidence"
+                />
+              </a>
+              {% endfor %} {% else %} No images {% endif %}
+            </td>
+            <td>{{ rejection.rejected_at|format_datetime }}</td>
+          </tr>
+          {% endfor %} {% if not rejected_requests %}
+          <tr>
+            <td colspan="6" class="text-center">No rejected requests</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

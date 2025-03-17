@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="login-wrapper vh-100 vw-100 position-fixed top-0 start-0">
+  <!-- Back Button -->
+  <a href="{{ url_for('index') }}" class="back-link">
+    <i class="fas fa-arrow-left"></i>
+    <span>Back to Home</span>
+  </a>
+
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-11 col-md-6 col-lg-5">
+        <div class="scrollable-wrapper">
+          <!-- Logo and Welcome Section -->
+          <div class="text-center text-white mb-4">
+            <img
+              src="../static/uploads/logo.png"
+              alt="logo"
+              class="navbar-logo"
+            />
+
+            <h2 class="display-6 fw-bold text-white">Food Share</h2>
+            <p class="lead opacity-75">Join our community today</p>
+          </div>
+
+          <!-- Register Card -->
+          <div class="card login-card">
+            <div class="card-body p-4 p-md-5">
+              <h3 class="card-title text-center fw-bold mb-4">
+                Create Account
+              </h3>
+
+              <form action="{{ url_for('register') }}" method="POST">
+                <!-- Username Input -->
+                <div class="mb-4">
+                  <label for="username" class="form-label">Username</label>
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text border-end-0">
+                      <i class="fas fa-user"></i>
+                    </span>
+                    <input
+                      type="text"
+                      class="form-control border-start-0"
+                      id="username"
+                      name="username"
+                      placeholder="Choose a username"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <!-- Email Input -->
+                <div class="mb-4">
+                  <label for="email" class="form-label">Email Address</label>
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text border-end-0">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                    <input
+                      type="email"
+                      class="form-control border-start-0"
+                      id="email"
+                      name="email"
+                      placeholder="name@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <!-- Mobile Input -->
+                <div class="mb-4">
+                  <label for="mobile" class="form-label">Mobile Number</label>
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text border-end-0">
+                      <i class="fas fa-phone"></i>
+                    </span>
+                    <input
+                      type="tel"
+                      class="form-control border-start-0"
+                      id="mobile"
+                      name="mobile"
+                      placeholder="Enter your mobile number"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <!-- Password Input -->
+                <div class="mb-4">
+                  <label for="password" class="form-label">Password</label>
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text border-end-0">
+                      <i class="fas fa-lock"></i>
+                    </span>
+                    <input
+                      type="password"
+                      class="form-control border-start-0"
+                      id="password"
+                      name="password"
+                      placeholder="Create a strong password"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <!-- User Type Select -->
+                <div class="mb-4">
+                  <label for="user_type" class="form-label"
+                    >I want to register as</label
+                  >
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text border-end-0">
+                      <i class="fas fa-users"></i>
+                    </span>
+                    <select
+                      class="form-select border-start-0"
+                      id="user_type"
+                      name="user_type"
+                      required
+                    >
+                      <option value="" disabled selected>
+                        Select your role
+                      </option>
+                      <option value="donor">Donor</option>
+                      <option value="ngo">NGO</option>
+                      <option value="volunteer">Volunteer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary btn-lg w-100 mb-4">
+                  Create Account
+                </button>
+
+                <!-- Login Link -->
+                <div class="text-center">
+                  <p class="mb-0">
+                    Already have an account?
+                    <a
+                      href="{{ url_for('login') }}"
+                      class="text-primary fw-bold"
+                      >Sign In</a
+                    >
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Social Proof -->
+          <div class="text-center text-white mt-4 mb-4">
+            <p class="small mb-0 opacity-75">
+              <i class="fas fa-shield-alt me-1"></i>
+              Join 500+ organizations already on our platform
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

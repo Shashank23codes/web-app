@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-lg-6 text-white pe-lg-5">
+          <h1 class="hero-title animate__animated animate__fadeInUp">
+            Making Food <span class="text-highlight">Donation</span> Simple
+            &amp; Efficient
+          </h1>
+          <p
+            class="hero-subtitle mb-4 animate__animated animate__fadeInUp animate__delay-1s"
+          >
+            Join our mission to reduce food waste and help those in need.
+            Connect with local NGOs and make a difference in your community.
+          </p>
+          {% if not session.logged_in %}
+          <div
+            class="hero-buttons animate__animated animate__fadeInUp animate__delay-2s"
+          >
+            <a
+              href="{{ url_for('register') }}"
+              class="btn btn-primary btn-lg me-3 hover-effect"
+            >
+              Get Started <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+            <a href="#how-it-works" class="btn btn-outline-light btn-lg">
+              Learn More <i class="fas fa-info-circle ms-2"></i>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          <div class="hero-stats animate__animated animate__fadeInRight">
+            <div class="stats-grid">
+              <div class="stat-item stat-item-0">
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <h3 class="stat-label">Volunteers</h3>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="stat-card">
+                        <div class="stat-number">{{ volunteer_count }}</div>
+                        <div class="stat-description">Active Volunteers</div>
+                        <!-- <div class="stat-info">Delivering food across the city</div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stat-item stat-item-1">
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="stat-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h3 class="stat-label">Active Donors</h3>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="stat-card">
+                        <div class="stat-number">{{ donor_count }}</div>
+                        <div class="stat-description">Registered Donors</div>
+                        <!-- <div class="stat-info">Making a difference in our community</div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="stat-item stat-item-2">
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <div class="stat-card">
+                        <i class="fas fa-building"></i>
+                        <h3 class="stat-label">NGO Partners</h3>
+                      </div>
+                    </div>
+                    <div class="flip-card-back">
+                      <div class="stat-card">
+                        <div class="stat-number">{{ ngo_count }}</div>
+                        <div class="stat-description">Partner NGOs</div>
+                        <!-- <div class="stat-info">Distributing food to those in need</div> -->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+  </div>
+
+  <div class="hero-background">
+    <div class="hero-overlay"></div>
+    <div class="hero-pattern"></div>
+  </div>
+</section>
+
+<section id="features" class="py-6 bg-light">
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-lg-8 mx-auto">
+        <h2 class="display-5 fw-bold mb-3">Key Features</h2>
+        <p class="lead text-muted">
+          Discover how our platform makes food donation simple and efficient
+        </p>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card feature-card h-100 border-0 shadow-sm">
+          <div class="position-relative">
+            <img
+              src="https://images.unsplash.com/photo-1615397349754-cfa2066a298e?w=500&q=80"
+              class="card-img-top feature-img"
+              alt="Food Bank Distribution"
+            />
+            <div class="overlay-badge">
+              <span class="badge bg-primary">
+                <i class="fas fa-clock me-1"></i>Real-time
+              </span>
+            </div>
+            <div class="overlay-images">
+              <div class="stack-images">
+                <img
+                  src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=500&q=80"
+                  alt="Food Donation"
+                  class="stack-img"
+                />
+                <img
+                  src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=500&q=80"
+                  alt="Volunteers"
+                  class="stack-img"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="card-body text-center p-4">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="fas fa-hand-holding-heart feature-icon"></i>
+            </div>
+            <h3 class="card-title h4 mb-3">Real-time Donations</h3>
+            <p class="card-text text-muted mb-4">
+              Connect instantly with local food banks and NGOs. Track your
+              donations in real-time.
+            </p>
+            <div class="live-indicator">
+              <span class="pulse-dot"></span>
+              <span class="live-text">Live Updates</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card feature-card h-100 border-0 shadow-sm">
+          <div class="position-relative">
+            <img
+              src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?w=500&q=80"
+              class="card-img-top feature-img"
+              alt="Easy to Use"
+            />
+            <div class="overlay-badge">
+              <span class="badge bg-success">
+                <i class="fas fa-check me-1"></i>Simple
+              </span>
+            </div>
+          </div>
+          <div class="card-body text-center p-4">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="fas fa-mobile-alt feature-icon"></i>
+            </div>
+            <h3 class="card-title h4 mb-3">Easy to Use</h3>
+            <p class="card-text text-muted mb-4">
+              Simple interface for both donors and receivers. Post donations and
+              coordinate pickups effortlessly.
+            </p>
+            <div class="feature-steps">
+              <div class="step-item">
+                <i class="fas fa-user-plus"></i>
+                <span>Register</span>
+              </div>
+              <div class="step-item">
+                <i class="fas fa-arrow-right"></i>
+              </div>
+              <div class="step-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <span>Donate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card feature-card h-100 border-0 shadow-sm">
+          <div class="position-relative">
+            <div class="map-container">
+              <img
+                src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=500&q=80"
+                class="card-img-top feature-img"
+                alt="Map"
+              />
+              <div class="map-overlay">
+                <div class="map-markers">
+                  <i
+                    class="fas fa-store marker donor-marker"
+                    data-bs-toggle="tooltip"
+                    title="Food Donor"
+                  ></i>
+                  <i
+                    class="fas fa-hand-holding-heart marker receiver-marker"
+                    data-bs-toggle="tooltip"
+                    title="Food Receiver"
+                  ></i>
+                </div>
+                <div class="distance-line"></div>
+              </div>
+            </div>
+            <div class="overlay-badge">
+              <span class="badge bg-info">
+                <i class="fas fa-map-marker-alt me-1"></i>Location
+              </span>
+            </div>
+          </div>
+          <div class="card-body text-center p-4">
+            <div class="feature-icon-wrapper mb-3">
+              <i class="fas fa-map-marked-alt feature-icon"></i>
+            </div>
+            <h3 class="card-title h4 mb-3">Location Based</h3>
+            <p class="card-text text-muted mb-4">
+              Find nearby donation opportunities easily. Get matched with local
+              organizations.
+            </p>
+            <div class="distance-indicator">
+              <i class="fas fa-route me-2"></i>
+              <span>Find nearest donors</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="success-stories py-6">
+  <div class="container">
+    <h2 class="text-center mb-5">Success Stories</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card story-card h-100">
+          <img
+            src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=500&q=80"
+            class="card-img-top"
+            alt="Restaurant Story"
+          />
+          <div class="card-body">
+            <h3>The Fresh Plate Restaurant</h3>
+            <p class="mb-3">
+              "We've donated over 1,000 meals in just 3 months. The app makes it
+              incredibly easy to help our community."
+            </p>
+            <span class="text-primary">- Sarah Chen, Owner</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card story-card h-100">
+          <img
+            src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&q=80"
+            class="card-img-top"
+            alt="Food Bank Story"
+          />
+          <div class="card-body">
+            <h3>Hope Food Bank</h3>
+            <p class="mb-3">
+              "The app has revolutionized how we receive donations. We've seen a
+              50% increase in food supplies."
+            </p>
+            <span class="text-primary">- Michael Rodriguez, Director</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="py-6 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">How It Works</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="step-card text-center">
+          <div class="step-number">1</div>
+          <h3>Register</h3>
+          <p>Sign up as a donor or receiver</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card text-center">
+          <div class="step-number">2</div>
+          <h3>Connect</h3>
+          <p>Post available donations or find nearby donors</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="step-card text-center">
+          <div class="step-number">3</div>
+          <h3>Donate</h3>
+          <p>Coordinate pickup and complete the donation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="impact" class="py-6 bg-primary text-white">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Impact</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="impact-card text-center">
+          <img
+            src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?w=500&q=80"
+            alt="Meals Saved"
+            class="impact-img mb-3"
+          />
+          <h3 class="impact-number">5,000</h3>
+          <p class="impact-label">Meals Saved Monthly</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="impact-card text-center">
+          <img
+            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=500&q=80"
+            alt="Partner Organizations"
+            class="impact-img mb-3"
+          />
+          <h3 class="impact-number">100</h3>
+          <p class="impact-label">Partner Organizations</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="impact-card text-center">
+          <img
+            src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=500&q=80"
+            alt="Active Users"
+            class="impact-img mb-3"
+          />
+          <h3 class="impact-number">2,000</h3>
+          <p class="impact-label">Active Users</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recent-donations py-6">
+  <div class="container">
+    <h2 class="text-center mb-5">Recent Donations</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card donation-card h-100">
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80"
+            class="card-img-top"
+            alt="Donation"
+          />
+          <div class="card-body">
+            <h3>Fresh Produce</h3>
+            <p class="mb-2">Donated by: Local Grocery Store</p>
+            <p class="mb-2">Amount: 50 kg</p>
+            <span class="text-muted">2 hours ago</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card donation-card h-100">
+          <img
+            src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&q=80"
+            class="card-img-top"
+            alt="Donation"
+          />
+          <div class="card-body">
+            <h3>Baked Goods</h3>
+            <p class="mb-2">Donated by: City Bakery</p>
+            <p class="mb-2">Amount: 100 items</p>
+            <span class="text-muted">5 hours ago</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- New Testimonials Section -->
+<section class="testimonials py-6 bg-gradient">
+  <div class="container">
+    <h2 class="text-center text-white mb-5">What Our Users Say</h2>
+    <div class="testimonial-slider">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="rating mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">
+                "This platform has made food donation so much easier. The
+                real-time tracking and volunteer coordination is fantastic.
+                We're able to help more people than ever!"
+              </p>
+              <div class="user-info">
+                <img
+                  src="https://randomuser.me/api/portraits/women/43.jpg"
+                  alt="User"
+                  class="user-avatar"
+                />
+                <div class="user-details">
+                  <h5 class="user-name">Emma Wilson</h5>
+                  <p class="user-role">Restaurant Owner</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card featured">
+            <div class="testimonial-content">
+              <div class="rating mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="testimonial-text">
+                "As an NGO, this app has revolutionized how we receive
+                donations. The system is efficient, and the volunteer network is
+                amazing. Truly a game-changer!"
+              </p>
+              <div class="user-info">
+                <img
+                  src="https://randomuser.me/api/portraits/men/32.jpg"
+                  alt="User"
+                  class="user-avatar"
+                />
+                <div class="user-details">
+                  <h5 class="user-name">David Chang</h5>
+                  <p class="user-role">NGO Director</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <div class="rating mb-3">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="testimonial-text">
+                "Being a volunteer on this platform has been incredibly
+                rewarding. The app makes it easy to coordinate pickups and
+                deliveries. Great community impact!"
+              </p>
+              <div class="user-info">
+                <img
+                  src="https://randomuser.me/api/portraits/women/28.jpg"
+                  alt="User"
+                  class="user-avatar"
+                />
+                <div class="user-details">
+                  <h5 class="user-name">Sarah Martinez</h5>
+                  <p class="user-role">Volunteer</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact" class="text-white py-5">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3>Contact Us</h3>
+        <p class="mb-1">Email: info@nomorewaste.com</p>
+        <p>Phone: 12345 67890</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Follow Us</h3>
+        <div class="social-links">
+          <a href="#" class="text-white me-3"
+            ><i class="fab fa-facebook fa-lg"></i
+          ></a>
+          <a href="#" class="text-white me-3"
+            ><i class="fab fa-twitter fa-lg"></i
+          ></a>
+          <a href="#" class="text-white"
+            ><i class="fab fa-instagram fa-lg"></i
+          ></a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4" />
+    <p class="text-center mb-0">
+      &copy; 2025 Food Share App. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+{% endblock %}

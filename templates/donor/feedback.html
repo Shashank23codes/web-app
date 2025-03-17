@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1 class="dashboard-title">Your Feedback</h1>
+    <p class="dashboard-subtitle">
+      View feedback from NGOs about your donations
+    </p>
+  </div>
+
+  <div class="card donations-table-card">
+    <div class="donations-table-header">
+      <h4>Feedback Received</h4>
+    </div>
+    <div class="table-responsive">
+      <table class="table donations-table">
+        <thead>
+          <tr>
+            <th>NGO Name</th>
+            <th>Rating</th>
+            <th>Comment</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for feedback in feedbacks %}
+          <tr>
+            <td>{{ feedback[3] }}</td>
+            <td>
+              {% if feedback[0] and feedback[0]|int is greaterthan 0 %} {% for i
+              in range(feedback[0]|int) %}
+              <i class="fas fa-star text-warning"></i>
+              {% endfor %} {% else %} No rating {% endif %}
+            </td>
+            <td>{{ feedback[1]}}</td>
+            <td>{{ feedback[2]|format_datetime }}</td>
+          </tr>
+          {% endfor %} {% if not feedbacks %}
+          <tr>
+            <td colspan="4" class="text-center py-4">
+              <i class="fas fa-comment-slash fa-2x mb-3 text-muted"></i>
+              <p class="text-muted mb-0">No feedback received yet.</p>
+            </td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

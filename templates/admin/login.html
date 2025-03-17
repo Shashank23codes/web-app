@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="login-wrapper vh-100 vw-100 position-fixed top-0 start-0">
+  <!-- Back Button -->
+  <a href="{{ url_for('index') }}" class="back-link">
+    <i class="fas fa-arrow-left"></i>
+    <span>Back to Home</span>
+  </a>
+
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-11 col-md-6 col-lg-4">
+        <!-- Logo and Welcome Section - Reduced margins -->
+        <div class="text-center text-white mb-3">
+          <i class="fas fa-user-shield fa-2x mb-2 text-info"></i>
+          <h2 class="h3 fw-bold text-white mb-2">Admin Portal</h2>
+          <p class="small text-white-50">Secure administrative access</p>
+        </div>
+
+        <!-- Admin Login Card -->
+        <div class="card admin-card">
+          <div class="card-body p-4">
+            <h3 class="card-title text-center h5 fw-bold mb-4">Admin Login</h3>
+
+            <form action="{{ url_for('admin_login') }}" method="POST">
+              <!-- Username Input -->
+              <div class="mb-3">
+                <label for="username" class="form-label small">Username</label>
+                <div class="input-group">
+                  <span class="input-group-text border-end-0 admin-icon-height">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input
+                    type="text"
+                    class="form-control border-start-0"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Password Input -->
+              <div class="mb-3">
+                <label for="password" class="form-label small">Password</label>
+                <div class="input-group">
+                  <span class="input-group-text border-end-0 admin-icon-height">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    class="form-control border-start-0"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Secret Key Input -->
+              <div class="mb-4">
+                <label for="secret_key" class="form-label small"
+                  >Secret Key</label
+                >
+                <div class="input-group">
+                  <span class="input-group-text border-end-0 admin-icon-height">
+                    <i class="fas fa-key"></i>
+                  </span>
+                  <input
+                    type="password"
+                    class="form-control border-start-0"
+                    id="secret_key"
+                    name="secret_key"
+                    placeholder="Enter secret key"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-info w-100 mb-3">
+                <i class="fas fa-sign-in-alt me-2"></i>Secure Login
+              </button>
+
+              <!-- Back to User Login -->
+              <div class="text-center">
+                <a
+                  href="{{ url_for('login') }}"
+                  class="text-white-50 text-decoration-none small"
+                >
+                  <i class="fas fa-user me-1"></i>
+                  Back to User Login
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Security Notice -->
+        <div class="text-center text-white mt-3">
+          <p class="small mb-0 opacity-75">
+            <i class="fas fa-shield-alt me-1"></i>
+            Secured with advanced encryption
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

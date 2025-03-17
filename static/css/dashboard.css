@@ -1,0 +1,216 @@
+/* Dashboard Layout */
+.dashboard-container {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-title {
+    color: #2c3e50;
+    font-weight: 700;
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.dashboard-subtitle {
+    color: #7f8c8d;
+    font-size: 1rem;
+}
+
+/* Donation Form Card */
+.donation-form-card {
+    background: white;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.donation-form-card:hover {
+    transform: translateY(-5px);
+}
+
+.donation-form-header {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px 15px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-form-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1));
+}
+
+.donation-form-title {
+    font-size: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.donation-form-body {
+    padding: 2rem;
+}
+
+/* Form Controls */
+.form-floating {
+    margin-bottom: 1.5rem;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Custom File Input */
+.file-upload-wrapper {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.file-upload-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 2.75rem;
+    margin: 0;
+    opacity: 0;
+}
+
+.file-upload-text {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 2.75rem;
+    padding: 0.75rem 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+/* Donations Table Card */
+.donations-table-card {
+    background: white;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.donations-table-header {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px 15px 0 0;
+}
+
+.table-responsive {
+    padding: 1.5rem;
+}
+
+.donations-table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.donations-table th {
+    font-weight: 600;
+    color: #2c3e50;
+    border-bottom: 2px solid #e9ecef;
+    padding: 1rem;
+}
+
+.donations-table td {
+    padding: 1rem;
+    vertical-align: middle;
+}
+
+/* Status Badges */
+.status-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-pending {
+    background-color: #ffeeba;
+    color: #856404;
+}
+
+.status-accepted {
+    background-color: #c3e6cb;
+    color: #155724;
+}
+
+.status-in-transit {
+    background-color: #b8daff;
+    color: #004085;
+}
+
+.status-delivered {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Submit Button */
+.btn-donate {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-donate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 1rem;
+    }
+    
+    .donation-form-header,
+    .donations-table-header {
+        padding: 1rem;
+    }
+    
+    .donation-form-body {
+        padding: 1.5rem;
+    }
+    
+    .table-responsive {
+        padding: 1rem;
+    }
+} 

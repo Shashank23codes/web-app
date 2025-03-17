@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+{% extends 'base.html' %} {% block content %}
+<div class="login-wrapper vh-100 vw-100 position-fixed top-0 start-0">
+  <!-- Back Button -->
+  <a href="{{ url_for('index') }}" class="back-link">
+    <i class="fas fa-arrow-left"></i>
+    <span>Back to Home</span>
+  </a>
+
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center">
+      <div class="col-11 col-md-6 col-lg-5">
+        <!-- Logo and Welcome Section -->
+        <div class="text-center text-white mb-4">
+          <img
+            src="../static/uploads/logo.png"
+            alt="logo"
+            class="navbar-logo"
+          />
+
+          <h2 class="display-6 fw-bold text-white">Food Share</h2>
+          <p class="lead opacity-75">Welcome back to our community</p>
+        </div>
+
+        <!-- Login Card -->
+        <div class="card login-card">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="card-title text-center fw-bold mb-4">Sign In</h3>
+
+            <form action="{{ url_for('login') }}" method="POST">
+              <!-- Email Input -->
+              <div class="mb-4">
+                <label for="email" class="form-label">Email Address</label>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text border-end-0">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                  <input
+                    type="email"
+                    class="form-control border-start-0"
+                    id="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Password Input -->
+              <div class="mb-4">
+                <div class="d-flex justify-content-between align-items-center">
+                  <label for="password" class="form-label">Password</label>
+                </div>
+                <div class="input-group input-group-lg">
+                  <span class="input-group-text border-end-0">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                  <input
+                    type="password"
+                    class="form-control border-start-0"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-lg w-100 mb-4">
+                Sign In
+              </button>
+
+              <!-- Admin Login Link -->
+              <div class="text-center mb-4">
+                <a
+                  href="{{ url_for('admin_login') }}"
+                  class="text-decoration-none text-muted"
+                >
+                  <i class="fas fa-user-shield me-1"></i>
+                  Admin Login
+                </a>
+              </div>
+
+              <!-- Sign Up Link -->
+              <div class="text-center">
+                <p class="mb-0">
+                  Don't have an account?
+                  <a
+                    href="{{ url_for('register') }}"
+                    class="text-primary fw-bold"
+                    >Create Account</a
+                  >
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="text-center text-white mt-4">
+          <p class="small mb-0 opacity-75">
+            <i class="fas fa-shield-alt me-1"></i>
+            Trusted by 500+ organizations worldwide
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
