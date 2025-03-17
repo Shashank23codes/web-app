@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: food-donation-web
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python app.py"
+    envVars:
+      - key: MYSQL_HOST
+        value: <your-mysql-host>
+      - key: MYSQL_USER
+        value: <your-mysql-user>
+      - key: MYSQL_PASSWORD
+        value: <your-mysql-password>
+      - key: SECRET_KEY
+        value: <your-secret-key>
+    plan: free
+
+databases:
+  - name: food-donation-db
+    engine: mysql
+    version: 8.0
+    plan: free
+    envVars:
+      - key: MYSQL_HOST
+        fromDatabase:
+          name: food-donation-db
+          property: host
+      - key: MYSQL_USER
+        fromDatabase:
+          name: food-donation-db
+          property: user
+      - key: MYSQL_PASSWORD
+        fromDatabase:
+          name: food-donation-db
+          property: password
+      - key: MYSQL_DB
+        fromDatabase:
+          name: food-donation-db
+          property: database
