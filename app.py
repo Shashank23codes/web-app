@@ -8,6 +8,10 @@ from config import Config
 from functools import wraps
 from flask import Blueprint
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
